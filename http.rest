@@ -1,5 +1,5 @@
 ###
-POST http://localhost:3006/register
+POST http://localhost:3000/register
 Content-Type: application/json
 
 {
@@ -9,4 +9,4 @@ Content-Type: application/json
 
 ###
 ###
-GET http://localhost:3006/users
+GET http://localhost:3000/users

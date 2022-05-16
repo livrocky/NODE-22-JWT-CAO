@@ -2,8 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const { PORT } = require('./config');
-const userRoute = require('./routes/userRoutes');
 const { showBody } = require('./middleware');
+const userRoute = require('./routes/userRoutes');
 
 const app = express();
 
