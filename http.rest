@@ -8,5 +8,4 @@ Content-Type: application/json
 }
 
 ###
-###
 GET http://localhost:3006/users
