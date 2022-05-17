@@ -7,6 +7,18 @@ Content-Type: application/json
 "password": "secret123"
 }
 
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+"email": "labas@krabas.lt",
+"password": "secret123"
+}
 
 ###
-GET http://localhost:3000/
+GET http://localhost:3000/articles
+Authorization: BEARER token
+
+###
+GET http://localhost:3000/users

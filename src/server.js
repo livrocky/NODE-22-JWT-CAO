@@ -27,4 +27,3 @@ app.all('*', (req, res) => {
 });
 
 app.listen(PORT, () => console.log('server online on port', PORT));
-console.log('PORT ===', PORT);
