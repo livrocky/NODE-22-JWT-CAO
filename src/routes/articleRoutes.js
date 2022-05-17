@@ -1,4 +1,6 @@
 const express = require('express');
+const mysql = require('mysql2/promise');
+const { dbConfig } = require('../config');
 const { validateToken } = require('../middleware');
 const { getAllArticlesDb } = require('../model/articleModel');
 
@@ -16,4 +18,15 @@ articleRoute.get('/article', validateToken, async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+articleRoute.get('/allArticle', validateToken, async (req, res) => {
+  try {
+    const allArticleArr = await getAllArticlesDb();
+    res.json(allArticleArr);
+  } catch (error) {
+    // console.log('stack=== ', error.stack);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = articleRoute;
