@@ -1,8 +1,0 @@
-PORT=3000
-
-HOST=localhost
-MYSQL_USER=root
-PASSWORD=
-DATABASE=cao24-auth-jwt
-
-JWT_SECRET=

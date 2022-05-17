@@ -1,3 +1,4 @@
+/* eslint-disable newline-per-chained-call */
 /* eslint-disable prefer-destructuring */
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
@@ -15,9 +16,7 @@ function showBody(req, res, next) {
 async function validateUser(req, res, next) {
   // validuoti gauta email ir password
   const schema = Joi.object({
-    // eslint-disable-next-line newline-per-chained-call
     email: Joi.string().trim().email().lowercase().required(),
-    // eslint-disable-next-line newline-per-chained-call
     password: Joi.string().trim().min(5).max(10).required(),
   });
 
