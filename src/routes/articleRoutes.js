@@ -16,4 +16,15 @@ articleRoute.get('/article', validateToken, async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+articleRoute.get('/allArticle', validateToken, async (req, res) => {
+  try {
+    const allArticleArr = await getAllArticlesDb();
+    res.json(allArticleArr);
+  } catch (error) {
+    // console.log('stack=== ', error.stack);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = articleRoute;

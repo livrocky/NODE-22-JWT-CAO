@@ -22,3 +22,7 @@ Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 
 ###
 GET http://localhost:3000/users
+
+###
+GET http://localhost:3000/allArticle
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Mjc4NjI0OSwiZXhwIjoxNjUyNzk3MDQ5fQ.z8etAvDEuys-70u_E9sxipWW3_7LZPvaW4WHaz_mZec
