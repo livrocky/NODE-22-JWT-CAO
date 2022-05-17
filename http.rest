@@ -17,8 +17,8 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/articles
-Authorization: BEARER token
+GET http://localhost:3000/article
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc3MTE2OCwiZXhwIjoxNjUyNzgxOTY4fQ.G8upiG2k4SjE_gdnEpA3qHXRiFtqSkrfvxNlyApSf6k
 
 ###
 GET http://localhost:3000/users
