@@ -1,47 +1,37 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const { addUserToDb, getAllUsers } = require('../model/userModel');
-const { validateUser, validateToken } = require('../middleware');
+const { validateUser } = require('../middleware');
+const { addUserToDb } = require('../model/userModel');
 
 const userRoute = express.Router();
 
-userRoute.get('/', (req, res) => {
-  res.send('Route');
-});
-
-userRoute.get('/users', validateToken, async (req, res) => {
-  try {
-    const allBooksArr = await getAllUsers();
-    res.json(allBooksArr);
-    console.log('allBooksArr===', allBooksArr);
-  } catch (error) {
-    res.sendStatus(500);
-  }
-});
-
 userRoute.post('/register', validateUser, async (req, res) => {
-  const { email, password } = req.body;
-  const plainTextPassword = password;
-  //   const salt = bcrypt.genSaltSync(10);
-  const hashedPassword = bcrypt.hashSync(plainTextPassword, 10);
-  //   console.log('salt===', salt);
-  console.log('hashedPassword===', hashedPassword);
+  // gauti vartotojo email ir password ir irasyti i users
+  try {
+    const { email, password } = req.body;
+    const plainTextPassword = password;
 
-  const newUser = {
-    email,
-    password: hashedPassword,
-  };
+    const hashedPassword = bcrypt.hashSync(plainTextPassword, 10);
+    console.log('hashedPassword ===', hashedPassword);
 
-  // kviesti modelio funkcija kuri sukuria vartotoja
-  const insertResult = await addUserToDb(newUser.email, newUser.password);
-  console.log('insertResult===', insertResult);
+    const newUser = {
+      email,
+      password: hashedPassword,
+    };
+    // kviesti modelio funkcija kuri sukuria varototoja
+    const insertResult = await addUserToDb(newUser.email, newUser.password);
+    console.log('insertResult ===', insertResult);
 
-  if (insertResult === false) {
-    res.status(500).json('something wrong');
-    return;
+    if (insertResult === false) {
+      res.status(500).json('something wrong');
+      return;
+    }
+
+    res.status(201).json('vartotojas sukurtas');
+  } catch (error) {
+    console.log(error);
+    res.status(500).json('nepavyko sukurti vartotojo');
   }
-  res.status(201).json('Vartotojas sukurtas');
 });
 
 module.exports = userRoute;

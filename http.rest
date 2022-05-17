@@ -3,10 +3,10 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "email": "labas@krabas.lt",
-    "password": "secret123"
+"email": "labas@krabas.lt",
+"password": "secret123"
 }
 
 ###
 ###
-GET http://localhost:3000/users
+GET http://localhost:3000/
