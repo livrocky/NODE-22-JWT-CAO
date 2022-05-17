@@ -1,4 +1,4 @@
-const { getFetch } = require('./modules/fetch.js');
+import { getFetch } from './modules/fetch.js';
 
 /* eslint-disable no-param-reassign */
 const articlesListEl = document.getElementById('articles');

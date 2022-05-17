@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 export const BASE_URL = 'http://localhost:3000';
 
 export async function getFetch(endpoint, token) {
