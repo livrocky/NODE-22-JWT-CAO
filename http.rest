@@ -7,10 +7,6 @@ Content-Type: application/json
 "password": "secret123"
 }
 
-###
-<<<<<<< HEAD
+
 ###
 GET http://localhost:3000/
-=======
-GET http://localhost:3006/users
->>>>>>> e60e1262a2bced089d4160c55c9619494b70617a
