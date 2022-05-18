@@ -49,6 +49,7 @@ async function registerFetch(email, password) {
   if (resp.status === 201) {
     // success
     handleError('Vartotojas sukurtas sekmingai');
+    window.location.href = 'login.html';
   } else {
     // fail
     handleError(await resp.json());
