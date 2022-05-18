@@ -1,23 +1,18 @@
+/* eslint-disable no-use-before-define */
 const BASE_URL = 'http://localhost:3000';
 
 const formEl = document.getElementById('login');
 const errEl = document.getElementById('err');
+const errorMsg = document.getElementById('error-msg');
+const emailInputEl = formEl.elements.email;
+const passwordInputEl = formEl.elements.password;
 
-function handleError(msg) {
-  errEl.textContent = '';
-  if (typeof msg === 'string') {
-    errEl.textContent = msg;
-  }
-  if (Array.isArray(msg)) {
-    msg.forEach((eObj) => {
-      errEl.innerHTML += `${eObj.message}<br>`;
-    });
-  }
-}
+console.log('emailInputEl===', emailInputEl);
 
 formEl.addEventListener('submit', async (event) => {
   event.preventDefault();
   console.log('js submit form');
+  clearErrors();
   const loginObj = {
     email: formEl.elements.email.value.trim(),
     password: formEl.elements.password.value.trim(),
@@ -47,3 +42,29 @@ formEl.addEventListener('submit', async (event) => {
     handleError(dataInJs);
   }
 });
+
+function handleError(msg) {
+  errEl.textContent = '';
+  if (typeof msg === 'string') {
+    errEl.textContent = msg;
+  }
+  if (Array.isArray(msg)) {
+    msg.forEach((eObj) => {
+      if (eObj.field === 'email') {
+        emailInputEl.style.border = '2px solid red ';
+        errorMsg.nextElementSibling.textContent = eObj.message;
+      }
+      if (eObj.field === 'password') {
+        passwordInputEl.style.border = '2px solid red ';
+        passwordInputEl.nextElementSibling.textContent = eObj.message;
+      }
+    });
+  }
+}
+
+async function clearErrors() {
+  emailInputEl.style.border = 'none';
+  passwordInputEl.style.border = 'none';
+  passwordInputEl.nextElementSibling.textContent = '';
+  emailInputEl.nextElementSibling.textContent = '';
+}

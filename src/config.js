@@ -9,7 +9,6 @@ const dbConfig = {
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
   port: process.env.DB_PORT,
-  // tik macui reikia porto dbConfige
 };
 
 const jwtSecret = process.env.JWT_SECRET;
