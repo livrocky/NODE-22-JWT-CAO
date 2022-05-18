@@ -2,8 +2,8 @@
 const BASE_URL = 'http://localhost:3000';
 
 const formEl = document.getElementById('login');
-const errorMsg = document.getElementById('error-msg');
 const errEl = document.getElementById('err');
+const errorMsg = document.getElementById('error-msg');
 const emailInputEl = formEl.elements.email;
 const passwordInputEl = formEl.elements.password;
 
@@ -52,11 +52,11 @@ function handleError(msg) {
     msg.forEach((eObj) => {
       if (eObj.field === 'email') {
         emailInputEl.style.border = '2px solid red ';
-        errorMsg.textContent = eObj.message;
+        errorMsg.nextElementSibling.textContent = eObj.message;
       }
       if (eObj.field === 'password') {
         passwordInputEl.style.border = '2px solid red ';
-        errorMsg.textContent = eObj.message;
+        passwordInputEl.nextElementSibling.textContent = eObj.message;
       }
     });
   }
