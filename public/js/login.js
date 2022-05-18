@@ -2,6 +2,7 @@
 const BASE_URL = 'http://localhost:3000';
 
 const formEl = document.getElementById('login');
+const errorMsg = document.getElementById('error-msg');
 const errEl = document.getElementById('err');
 const emailInputEl = formEl.elements.email;
 const passwordInputEl = formEl.elements.password;
@@ -50,12 +51,12 @@ function handleError(msg) {
   if (Array.isArray(msg)) {
     msg.forEach((eObj) => {
       if (eObj.field === 'email') {
-        emailInputEl.style.border = '2px solid red';
-        emailInputEl.nextElementSibling.textContent = eObj.message;
+        emailInputEl.style.border = '2px solid red ';
+        errorMsg.textContent = eObj.message;
       }
       if (eObj.field === 'password') {
-        passwordInputEl.style.border = '2px solid red';
-        passwordInputEl.nextElementSibling.textContent = eObj.message;
+        passwordInputEl.style.border = '2px solid red ';
+        errorMsg.textContent = eObj.message;
       }
     });
   }
