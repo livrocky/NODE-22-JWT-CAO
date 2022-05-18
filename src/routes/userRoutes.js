@@ -28,16 +28,28 @@ userRoute.get('/users', async (req, res) => {
 userRoute.post('/register', validateUser, async (req, res) => {
   // gauti vartotojo email ir password ir irasyti i users
   try {
-    const { email, password } = req.body;
+    const gautasEmail = req.body.email;
+    const { password } = req.body;
     const plainTextPassword = password;
 
     const hashedPassword = bcrypt.hashSync(plainTextPassword, 10);
     console.log('hashedPassword ===', hashedPassword);
 
+    // tikrinam ar yra toks email jau uzregintas
+    const foundUser = await findUserByEmail(gautasEmail);
+    console.log('foundUser ===', foundUser);
+
+    // jei yra tokio email
+    if (foundUser) {
+      res.status(400).json(`Vartotojas su ${gautasEmail} el.pastu jau egzistuoja`);
+      return;
+    }
+
     const newUser = {
-      email,
+      email: gautasEmail,
       password: hashedPassword,
     };
+
     // kviesti modelio funkcija kuri sukuria varototoja
     const insertResult = await addUserToDb(newUser.email, newUser.password);
     console.log('insertResult ===', insertResult);

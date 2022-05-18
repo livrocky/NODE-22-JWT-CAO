@@ -18,11 +18,11 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/article
-Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc3MTE2OCwiZXhwIjoxNjUyNzgxOTY4fQ.G8upiG2k4SjE_gdnEpA3qHXRiFtqSkrfvxNlyApSf6k
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjg1NTA3MCwiZXhwIjoxNjUyODY1ODcwfQ.yKLYC3gJx6Vx3U-WlB-TlIgu-P2lZRLtNmoAYL8esfs
 
 ###
 GET http://localhost:3000/users
 
 ###
 GET http://localhost:3000/allArticle
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Mjc4NjI0OSwiZXhwIjoxNjUyNzk3MDQ5fQ.z8etAvDEuys-70u_E9sxipWW3_7LZPvaW4WHaz_mZec
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjg1NTA3MCwiZXhwIjoxNjUyODY1ODcwfQ.yKLYC3gJx6Vx3U-WlB-TlIgu-P2lZRLtNmoAYL8esfs
