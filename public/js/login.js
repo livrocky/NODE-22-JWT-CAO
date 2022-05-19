@@ -1,4 +1,4 @@
-import { clearErrorsArr } from './modules/validation.js';
+import { checkInput, clearErrorsArr, errorsArr } from './modules/validation.js';
 
 /* eslint-disable no-use-before-define */
 const BASE_URL = 'http://localhost:3000';
@@ -6,19 +6,33 @@ const BASE_URL = 'http://localhost:3000';
 const formEl = document.getElementById('login');
 const errEl = document.getElementById('err');
 const errorMsg = document.querySelectorAll('.error-msg');
-const emailInputEl = formEl.elements.email;
-const passwordInputEl = formEl.elements.password;
+const emailEl = formEl.elements.email;
+// const emailInputEl = formEl.elements.email;
+// const passwordInputEl = formEl.elements.password;
 
-console.log('emailInputEl===', emailInputEl);
+emailEl.addEventListener('blur', (event) => {
+  clearErrors();
+  const el = event.currentTarget;
+  checkInput(el.value, el.name, ['required', 'minLength-4', 'email']);
+  handleError(errorsArr);
+});
 
 formEl.addEventListener('submit', async (event) => {
   event.preventDefault();
   console.log('js submit form');
-  clearErrors();
+
   const loginObj = {
     email: formEl.elements.email.value.trim(),
     password: formEl.elements.password.value.trim(),
   };
+  clearErrors();
+
+  // TODO front end validation
+  checkInput(loginObj.email, 'email', ['required', 'minLength-4', 'email']);
+  checkInput(loginObj.password, 'password', ['required', 'minLength-5', 'maxLength-10']);
+
+  console.log('FE errorsArr ===', errorsArr);
+
   console.log('loginObj ===', loginObj);
 
   const resp = await fetch(`${BASE_URL}/login`, {
