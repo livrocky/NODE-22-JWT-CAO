@@ -31,9 +31,13 @@ formEl.addEventListener('submit', async (event) => {
   checkInput(loginObj.email, 'email', ['required', 'minLength-4', 'email']);
   checkInput(loginObj.password, 'password', ['required', 'minLength-5', 'maxLength-10']);
 
-  console.log('FE errorsArr ===', errorsArr);
-
+  // console.log('FE errorsArr ===', errorsArr);
   console.log('loginObj ===', loginObj);
+
+  if (errorsArr.length) {
+    handleError(errorsArr);
+    return;
+  }
 
   const resp = await fetch(`${BASE_URL}/login`, {
     method: 'POST',

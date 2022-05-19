@@ -1,6 +1,16 @@
 // eslint-disable-next-line import/no-mutable-exports
 export let errorsArr = [];
 
+// export function clearErrors() {
+//   // errorsArr = [];
+//   clearErrorsArr();
+//   errorMsg.forEach((htmlElement) => {
+//     // eslint-disable-next-line no-param-reassign
+//     htmlElement.textContent = '';
+//     htmlElement.previousElementSibling.classList.remove('invalid-input');
+//   });
+// }
+
 export function clearErrorsArr() {
   errorsArr = [];
 }
