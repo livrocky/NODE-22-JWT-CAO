@@ -5,6 +5,10 @@ header {
   background-color: bisque;
 }
 
+.title {
+  color: white;
+}
+
 .main-nav {
   display: flex;
   justify-content: left;
@@ -50,4 +54,29 @@ body {
 
 .login-btns {
   text-align: center;
+}
+
+.books-card {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: flex-start;
+    border: 1px solid white;
+    width: 15rem;
+    padding: 5% 15% 5% 15%;
+    margin: 0.5%;
+    border-radius: 0.2rem;
+    background-color: rgba(255, 255, 255, 0.274);
+}
+
+.content, .date {
+  padding: 1%;
+  color: white;
+}
+
+.books-article {
+  display: grid;
+  grid-template-columns: 10rem 10rem 10rem;
+  gap: 10%;
+  margin-left: 10%;
 }
