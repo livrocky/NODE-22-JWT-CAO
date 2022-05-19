@@ -8,7 +8,7 @@
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" /> -->
   <title>Login</title>
   <link rel="stylesheet" href="/public/css/style.css">
-  <script src="js/login.js" defer></script>
+  <script type="module" src="js/login.js" defer></script>
 </head>
 
 <body>
@@ -25,9 +25,9 @@
     <form id="login">
       <h3 id="err"></h3>
       <input class="inputEmail input" type="text" name="email" placeholder="Email" />
-      <p id="error-msg"></p>
+      <p class="error-msg"></p>
       <input class="inputPass input" type="password" name="password" placeholder="Password" />
-      <p id="error-msg"></p>
+      <p class="error-msg"></p>
       <div class="login-btns">
         <button type="submit">Login</button>
         <a class="register-btn" href="register.html">Register</a>

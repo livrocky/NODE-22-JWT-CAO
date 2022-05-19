@@ -1,9 +1,11 @@
+import { clearErrorsArr } from './modules/validation.js';
+
 /* eslint-disable no-use-before-define */
 const BASE_URL = 'http://localhost:3000';
 
 const formEl = document.getElementById('login');
 const errEl = document.getElementById('err');
-const errorMsg = document.getElementById('error-msg');
+const errorMsg = document.querySelectorAll('.error-msg');
 const emailInputEl = formEl.elements.email;
 const passwordInputEl = formEl.elements.password;
 
@@ -49,22 +51,37 @@ function handleError(msg) {
     errEl.textContent = msg;
   }
   if (Array.isArray(msg)) {
+    // msg.forEach((eObj) => {
+    //   if (eObj.field === 'email') {
+    //     emailInputEl.style.border = '2px solid red ';
+    //     emailInputEl.nextElementSibling.textContent = eObj.message;
+    //   }
+    //   if (eObj.field === 'password') {
+    //     passwordInputEl.style.border = '2px solid red ';
+    //     passwordInputEl.nextElementSibling.textContent = eObj.message;
+    //   }
+    // });
     msg.forEach((eObj) => {
-      if (eObj.field === 'email') {
-        emailInputEl.style.border = '2px solid red ';
-        errorMsg.nextElementSibling.textContent = eObj.message;
-      }
-      if (eObj.field === 'password') {
-        passwordInputEl.style.border = '2px solid red ';
-        passwordInputEl.nextElementSibling.textContent = eObj.message;
-      }
+      const elWithError = formEl.elements[eObj.field];
+      elWithError.classList.add('invalid-input');
+      elWithError.nextElementSibling.textContent = eObj.message;
     });
   }
 }
 
-async function clearErrors() {
-  emailInputEl.style.border = 'none';
-  passwordInputEl.style.border = 'none';
-  passwordInputEl.nextElementSibling.textContent = '';
-  emailInputEl.nextElementSibling.textContent = '';
+// async function clearErrors() {
+//   emailInputEl.style.border = 'none';
+//   passwordInputEl.style.border = 'none';
+//   passwordInputEl.nextElementSibling.textContent = '';
+//   emailInputEl.nextElementSibling.textContent = '';
+// }
+
+function clearErrors() {
+  // errorsArr = [];
+  clearErrorsArr();
+  errorMsg.forEach((htmlElement) => {
+    // eslint-disable-next-line no-param-reassign
+    htmlElement.textContent = '';
+    htmlElement.previousElementSibling.classList.remove('invalid-input');
+  });
 }
